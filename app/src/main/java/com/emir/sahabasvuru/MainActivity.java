@@ -138,12 +138,26 @@ public class MainActivity extends Activity {
         EditText search = input("Lokasyon veya kod ara");
         content.addView(search, margin(-1, dp(48), 0, 12, 0, 7));
 
+        TextView filterTitle = text("Filtreler", 14, NAVY, true);
+        content.addView(filterTitle, margin(-1, -2, 0, 6, 0, 5));
+
         LinearLayout filters = new LinearLayout(this);
+        filters.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout provinceBox = new LinearLayout(this);
+        provinceBox.setOrientation(LinearLayout.VERTICAL);
+        provinceBox.addView(label("İl"));
         Spinner province = spinner(provinces(all));
+        provinceBox.addView(province, new LinearLayout.LayoutParams(-1, dp(48)));
+
+        LinearLayout statusBox = new LinearLayout(this);
+        statusBox.setOrientation(LinearLayout.VERTICAL);
+        statusBox.addView(label("Durum"));
         Spinner status = spinner(new String[]{"Tüm durumlar", "Bekliyor", "Görüşüldü", "Başvuru Yapıldı", "Tamamlandı"});
-        filters.addView(province, new LinearLayout.LayoutParams(0, dp(48), 1));
+        statusBox.addView(status, new LinearLayout.LayoutParams(-1, dp(48)));
+
+        filters.addView(provinceBox, new LinearLayout.LayoutParams(0, -2, 1));
         filters.addView(space(dp(7), 1));
-        filters.addView(status, new LinearLayout.LayoutParams(0, dp(48), 1));
+        filters.addView(statusBox, new LinearLayout.LayoutParams(0, -2, 1));
         content.addView(filters);
 
         Button export = button("CSV dışa aktar", Color.WHITE, NAVY);
