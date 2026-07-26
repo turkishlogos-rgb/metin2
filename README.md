@@ -9,6 +9,7 @@
 - Verileri telefon içindeki SQLite veritabanında tutar.
 - Durum, yetkili, telefon, takip tarihi ve görüşme notu kaydeder.
 - İl, durum ve metinle filtreler.
+- Liste ekranında belirgin `İl` ve `Durum` filtreleri bulunur.
 - JSON yedekleme/geri yükleme ve CSV dışa aktarma sunar.
 - Özel saha verisi APK içine gömülmez; ilk liste telefondan içe aktarılır.
 
