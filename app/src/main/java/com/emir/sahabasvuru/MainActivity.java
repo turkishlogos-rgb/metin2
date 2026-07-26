@@ -291,7 +291,6 @@ public class MainActivity extends Activity {
         if (!db.trips().isEmpty()) return;
         try {
             InputStream in = getAssets().open("initial.csv");
-            Uri unused = null;
             List<Db.Site> sites = new ArrayList<>();
             BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
             String line; br.readLine();
@@ -299,7 +298,7 @@ public class MainActivity extends Activity {
                 String[] c = line.split(";", -1); if (c.length < 5) continue;
                 Db.Site s = new Db.Site(); s.code=c[0]; s.name=c[1]; s.province=c[2]; s.delivery=c[3]; s.missing=c[4]; sites.add(s);
             }
-            db.addTrip("Batı Anadolu • 21.07.2026", "21.07.2026", sites);
+            if (!sites.isEmpty()) db.addTrip("İlk çalışma", today(), sites);
         } catch (Exception ignored) {}
     }
 
